@@ -1,4 +1,4 @@
-package com.objective.tt;
+package com.objective.service;
 
 import javax.swing.JOptionPane;
 
@@ -18,12 +18,11 @@ public class ServiceImpl extends Service {
 		if (response == 1) {
 
 			String newDish = JOptionPane.showInputDialog(null, "Qual prato você pensou?", "Desisto", 3);
-			if (newDish == null) {
-				System.exit(0);
-			}
+			SystemExit(newDish);
 
 			String newTip = JOptionPane.showInputDialog(null, newDish + " é _______ mas " + this.getDish() + " não.",
 					"Complete", 3);
+			SystemExit(newTip);
 
 			Service newQuestion = new Service(newTip);
 
@@ -36,5 +35,11 @@ public class ServiceImpl extends Service {
 
 		}
 		return response;
+	}
+
+	private void SystemExit(String dish) {
+		if (dish == null || dish.isEmpty()) {
+			System.exit(0);
+		}
 	}
 }

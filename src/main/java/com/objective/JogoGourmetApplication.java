@@ -4,8 +4,8 @@ import javax.swing.JOptionPane;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.objective.tt.Service;
-import com.objective.tt.ServiceImpl;
+import com.objective.service.Service;
+import com.objective.service.ServiceImpl;
 
 @SpringBootApplication
 public class JogoGourmetApplication {
@@ -19,7 +19,7 @@ public class JogoGourmetApplication {
 
 		do {
 			i = startPane(question);
-		} while (i < 2);
+		} while (i > -1 && i < 2);
 
 	}
 

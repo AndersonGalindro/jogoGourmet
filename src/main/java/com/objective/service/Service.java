@@ -1,11 +1,11 @@
-package com.objective.tt;
+package com.objective.service;
 
 import java.text.MessageFormat;
 
 import javax.swing.JOptionPane;
 
 public class Service {
-
+	private int confirm = -1;
 	private Service parentQuestion;
 	private Service positiveQuestion;
 	private Service negativeQuestion;
@@ -23,17 +23,17 @@ public class Service {
 		int retorno = confirmDish();
 
 		if (retorno == 0) {
-			this.positiveQuestion.ask();
+			confirm = this.positiveQuestion.ask();
 		}
 		if (retorno == 1) {
-			this.negativeQuestion.ask();
+			confirm = this.negativeQuestion.ask();
 		}
-		return retorno;
+		return confirm;
 
 	}
 
 	protected int confirmDish() {
-		int confirm = JOptionPane.showOptionDialog(null, this.questionDescription, "Confirm",
+		confirm = JOptionPane.showOptionDialog(null, this.questionDescription, "Confirm",
 				JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 		if (confirm == 2) {
 			System.exit(0);
